@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+#include<time.h>
 using namespace std;
 
 int solution(string n, int s){
@@ -21,6 +22,7 @@ int solution(string n, int s){
 int main(){
     int t;
     cin >> t;
+    clock_t start_time = clock(); //start time
     int a[t];
     for(int i=0;i<t;i++){
         string n;
@@ -28,7 +30,13 @@ int main(){
         cin >> n >> s;
         a[i] = solution(n, s);
     }
+    
+    clock_t end_time1 = clock(); //end time
     for(int i=0; i<t; i++)
         cout << "Case " << i+1 << ": " << a[i] << "\n";
+
+    clock_t result = end_time1 - start_time; // result
+    double r = (double)result/CLOCKS_PER_SEC;
+	cout<<fixed<< r <<" seconds"<<endl;
     return 0;
 }
